@@ -9,9 +9,10 @@ export class PLogin {
     return (
       <div>
         <h2>Login</h2>
-        <stencil-route-link url="/register">
-          <button>Register</button>
-        </stencil-route-link>
+        <p>
+          Don't have an account?{" "}
+          <stencil-route-link url="/register">Register Now</stencil-route-link>
+        </p>
       </div>
     );
   }

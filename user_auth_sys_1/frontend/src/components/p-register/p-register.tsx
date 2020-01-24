@@ -9,9 +9,10 @@ export class PRegister {
     return (
       <div>
         <h2>Register</h2>
-        <stencil-route-link url="/login">
-          <button>Login</button>
-        </stencil-route-link>
+        <p>
+          Already Registered?{" "}
+          <stencil-route-link url="/login">Login Now</stencil-route-link>
+        </p>
       </div>
     );
   }
