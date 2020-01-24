@@ -9,7 +9,16 @@ export class PLogin {
     return (
       <div>
         <h2>Login</h2>
-        <p>
+        <input type="email" placeholder="Enter Email"></input>
+        <br />
+        <br />
+        <input type="password" placeholder="Enter Password"></input>
+        <br />
+        <br />
+        <button>Login</button>
+        <br />
+        <br />
+        <p class="subtext">
           Don't have an account?{" "}
           <stencil-route-link url="/register">Register Now</stencil-route-link>
         </p>
