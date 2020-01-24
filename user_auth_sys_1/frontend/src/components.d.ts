@@ -7,56 +7,50 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-import {
-  MatchResults,
-} from '@stencil/router';
+
 
 export namespace Components {
-  interface AppHome {}
-  interface AppProfile {
-    'match': MatchResults;
-  }
   interface AppRoot {}
+  interface PLogin {}
+  interface PRegister {}
 }
 
 declare global {
 
-
-  interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
-  };
-
-  interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+
+  interface HTMLPLoginElement extends Components.PLogin, HTMLStencilElement {}
+  var HTMLPLoginElement: {
+    prototype: HTMLPLoginElement;
+    new (): HTMLPLoginElement;
+  };
+
+  interface HTMLPRegisterElement extends Components.PRegister, HTMLStencilElement {}
+  var HTMLPRegisterElement: {
+    prototype: HTMLPRegisterElement;
+    new (): HTMLPRegisterElement;
+  };
   interface HTMLElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
-    'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'p-login': HTMLPLoginElement;
+    'p-register': HTMLPRegisterElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface AppHome {}
-  interface AppProfile {
-    'match'?: MatchResults;
-  }
   interface AppRoot {}
+  interface PLogin {}
+  interface PRegister {}
 
   interface IntrinsicElements {
-    'app-home': AppHome;
-    'app-profile': AppProfile;
     'app-root': AppRoot;
+    'p-login': PLogin;
+    'p-register': PRegister;
   }
 }
 
@@ -66,9 +60,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-      'app-profile': LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'p-login': LocalJSX.PLogin & JSXBase.HTMLAttributes<HTMLPLoginElement>;
+      'p-register': LocalJSX.PRegister & JSXBase.HTMLAttributes<HTMLPRegisterElement>;
     }
   }
 }
