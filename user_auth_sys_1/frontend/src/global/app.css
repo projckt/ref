@@ -21,6 +21,7 @@ main {
   margin: 3em auto;
 }
 
-.subtext {
-  font-size: 0.8em;
+:root {
+  --subtext-font-size: 0.8em;
+  --subtext-margin: 3em 0 0 0;
 }
