@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  console.log(req.body);
+  const { firstName, lastname, email, password } = req.body;
   res.send("hit");
 });
 
