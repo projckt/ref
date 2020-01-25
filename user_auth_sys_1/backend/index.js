@@ -10,4 +10,6 @@ mongoose
   })
   .then(() => console.log("MongoDB connected..!"))
   .catch(err => console.log(err));
+
+app.use(express.json());
 app.listen(PORT, console.log(`Server started on PORT: ${PORT}`));
