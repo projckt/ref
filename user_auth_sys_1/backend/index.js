@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const auth = require("./routes/auth");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const PORT = 5000;
+
+const auth = require("./routes/auth");
 
 dotenv.config();
 mongoose.connect(
