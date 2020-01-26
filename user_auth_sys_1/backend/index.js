@@ -9,4 +9,4 @@ app.get("/", (req, res) => {
 
 app.use("/user", auth);
 
-app.listen(PORT, () => console.log(`Server is running on port 3000`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
