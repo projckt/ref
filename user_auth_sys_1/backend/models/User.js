@@ -1,30 +1,30 @@
 const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
-  fname: {
+  First_Name: {
     type: String,
     required: true,
     min: 1,
     max: 255
   },
-  lname: {
+  Last_Name: {
     type: String,
     required: true,
     min: 1,
     max: 255
   },
-  email: {
+  Email: {
     type: String,
     required: true,
     min: 5,
     max: 255
   },
-  pass: {
+  Password: {
     type: String,
     required: true,
     max: 1024,
     min: 6
   },
-  date: {
+  Date: {
     type: Date,
     default: Date.now
   }

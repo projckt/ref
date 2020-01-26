@@ -1,38 +1,26 @@
 const router = require("express").Router();
 const User = require("../models/User");
-const Joi = require("@hapi/joi");
+const { registerValidation } = require("../validation");
 
-const registerIpSchema = Joi.object({
-  fname: Joi.string()
-    .min(1)
-    .required(),
-  lname: Joi.string()
-    .min(1)
-    .required(),
-  email: Joi.string()
-    .min(5)
-    .required()
-    .email(),
-  pass: Joi.string()
-    .min(6)
-    .required()
-});
+router.post("/register", async (req, res) => {
+  const { error } = registerValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
-router.post("/register", (req, res) => {
-  const validation = registerIpSchema.validate(req.body);
-  res.send(validation);
-  // const user = new User({
-  //   fname: req.body.fname,
-  //   lname: req.body.lname,
-  //   email: req.body.email,
-  //   pass: req.body.pass
-  // });
-  // try {
-  //   const savedUser = await user.save();
-  //   res.send(savedUser);
-  // } catch (err) {
-  //   res.status(400).end(err);
-  // }
+  const emailExists = await User.findOne({ Email: req.body.Email });
+  if (emailExists) return res.status(400).send("Email already exists");
+
+  const user = new User({
+    First_Name: req.body.First_Name,
+    Last_Name: req.body.Last_Name,
+    Email: req.body.Email,
+    Password: req.body.Password
+  });
+  try {
+    const savedUser = await user.save();
+    res.send(savedUser);
+  } catch (err) {
+    res.status(400).end(err);
+  }
 });
 
 module.exports = router;
