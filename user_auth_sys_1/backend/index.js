@@ -6,7 +6,6 @@ const dotenv = require("dotenv");
 const PORT = 5000;
 
 dotenv.config();
-
 mongoose.connect(
   process.env.DB_CONNECT,
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -15,10 +14,10 @@ mongoose.connect(
   }
 );
 
-app.get("/", (req, res) => {
-  res.send("lel");
-});
-
+app.use(express.json());
 app.use("/user", auth);
-
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
+// app.get("/", (req, res) => {
+//   res.send("lel");
+// });
