@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
 const auth = require("./routes/auth");
+const PORT = 5000;
 
 app.get("/", (req, res) => {
   res.send("lel");
 });
 
-app.use("/api/user", auth);
+app.use("/user", auth);
 
-app.listen(3000, () => console.log(`Server is running on port 3000`));
+app.listen(PORT, () => console.log(`Server is running on port 3000`));
