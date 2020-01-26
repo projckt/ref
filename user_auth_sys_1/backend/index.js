@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const auth = require("./routes/auth");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const PORT = 5000;
 
+dotenv.config();
+
 mongoose.connect(
-  "mongodb://localhost/test",
+  process.env.DB_CONNECT,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log(`connected to database`);
