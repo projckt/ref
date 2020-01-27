@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const argon = require("argon2");
 const User = require("../models/User");
-const { registerValidation } = require("../validation");
+const { registerValidation, loginValidation } = require("../validation");
 
 router.post("/register", async (req, res) => {
   let resp = {};
@@ -43,6 +43,29 @@ router.post("/register", async (req, res) => {
     res.json(resp);
     return res.status(400).json(resp);
   }
+});
+
+router.post("/login", async (req, res) => {
+  let resp = {};
+  let { error } = loginValidation(req.body);
+  if (error) {
+    resp.status = "failed";
+    resp.msg = error.details[0].message;
+    return res.status(400).json(resp);
+  }
+  let user = await User.findOne({ Email: req.body.Email });
+  if (!user) {
+    resp.status = "failed";
+    resp.msg = "Email is wrong";
+    return res.status(400).json(resp);
+  }
+  const validPass = await argon2.verify(user.Password, "password");
+  if (!validPass) {
+    resp.status = "failed";
+    resp.msg = "Password is wrong";
+    return res.status(400).json(resp);
+  }
+  res.send("logged in");
 });
 
 module.exports = router;
