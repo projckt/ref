@@ -1,13 +1,17 @@
 const router = require("express").Router();
+const argon = require("argon2");
 const User = require("../models/User");
 const { registerValidation } = require("../validation");
 
 router.post("/register", async (req, res) => {
-  const { error } = registerValidation(req.body);
+  let { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const emailExists = await User.findOne({ Email: req.body.Email });
+  let emailExists = await User.findOne({ Email: req.body.Email });
   if (emailExists) return res.status(400).send("Email already exists");
+
+  let hash = await argon.hash(req.body.Password);
+  res.send(hash);
 
   const user = new User({
     First_Name: req.body.First_Name,
