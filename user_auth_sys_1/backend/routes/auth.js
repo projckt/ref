@@ -59,9 +59,8 @@ router.post("/login", async (req, res) => {
     resp.msg = "Email is wrong";
     return res.status(400).json(resp);
   }
-  const validPass = await argon.verify(user.Password, req.body.Password);
-  console.log(validPass);
-  if (!validPass) {
+  const isPassValid = await argon.verify(user.Password, req.body.Password);
+  if (!isPassValid) {
     resp.status = "failed";
     resp.msg = "Password is wrong";
     return res.status(400).json(resp);
