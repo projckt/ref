@@ -4,26 +4,44 @@ const User = require("../models/User");
 const { registerValidation } = require("../validation");
 
 router.post("/register", async (req, res) => {
+  let resp = {};
   let { error } = registerValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) {
+    resp.status = "failed";
+    resp.msg = error.details[0].message;
+    return res.status(400).json(resp);
+  }
 
   let emailExists = await User.findOne({ Email: req.body.Email });
-  if (emailExists) return res.status(400).send("Email already exists");
+  if (emailExists) {
+    resp.status = "failed";
+    resp.msg = "Email already exists";
+    return res.status(400).json(resp);
+  }
 
-  let hash = await argon.hash(req.body.Password);
-  res.send(hash);
-
+  let hashedPassword = await argon.hash(req.body.Password);
   const user = new User({
     First_Name: req.body.First_Name,
     Last_Name: req.body.Last_Name,
     Email: req.body.Email,
-    Password: req.body.Password
+    Password: hashedPassword
   });
   try {
-    const savedUser = await user.save();
-    res.send(savedUser);
+    let createdUser = await user.save();
+    if (createdUser._id) {
+      resp.status = "success";
+      resp.msg = "User Created";
+      return res.json(resp);
+    } else {
+      resp.status = "failed";
+      resp.msg = "Something went wrong";
+      return res.json(resp);
+    }
   } catch (err) {
-    res.status(400).end(err);
+    resp.status = "failed";
+    resp.msg = err;
+    res.json(resp);
+    return res.status(400).json(resp);
   }
 });
 
