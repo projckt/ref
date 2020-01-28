@@ -10,17 +10,14 @@ export class PLogin {
 
   handleEmailIp(event) {
     this.email = event.target.value;
-    console.log(`Email: ${this.email}`);
   }
 
   handlePasswordIp(event) {
     this.password = event.target.value;
-    console.log(`Password: ${this.password}`);
   }
 
   handleLoginClick(event) {
     event.preventDefault();
-    console.log(`Button Click`);
   }
 
   render() {
@@ -30,6 +27,7 @@ export class PLogin {
         <input
           type="email"
           placeholder="Enter Email"
+          value=""
           onInput={(event: UIEvent) => this.handleEmailIp(event)}
         ></input>
         <br />
@@ -37,6 +35,7 @@ export class PLogin {
         <input
           type="password"
           placeholder="Enter Password"
+          value=""
           onInput={(event: UIEvent) => this.handlePasswordIp(event)}
         ></input>
         <br />
