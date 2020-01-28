@@ -18,6 +18,7 @@ export namespace Components {
   interface PRegister {
     'history': RouterHistory;
   }
+  interface PSettings {}
 }
 
 declare global {
@@ -46,11 +47,18 @@ declare global {
     prototype: HTMLPRegisterElement;
     new (): HTMLPRegisterElement;
   };
+
+  interface HTMLPSettingsElement extends Components.PSettings, HTMLStencilElement {}
+  var HTMLPSettingsElement: {
+    prototype: HTMLPSettingsElement;
+    new (): HTMLPSettingsElement;
+  };
   interface HTMLElementTagNameMap {
     'app-root': HTMLAppRootElement;
     'p-dashboard': HTMLPDashboardElement;
     'p-login': HTMLPLoginElement;
     'p-register': HTMLPRegisterElement;
+    'p-settings': HTMLPSettingsElement;
   }
 }
 
@@ -61,12 +69,14 @@ declare namespace LocalJSX {
   interface PRegister {
     'history'?: RouterHistory;
   }
+  interface PSettings {}
 
   interface IntrinsicElements {
     'app-root': AppRoot;
     'p-dashboard': PDashboard;
     'p-login': PLogin;
     'p-register': PRegister;
+    'p-settings': PSettings;
   }
 }
 
@@ -80,6 +90,7 @@ declare module "@stencil/core" {
       'p-dashboard': LocalJSX.PDashboard & JSXBase.HTMLAttributes<HTMLPDashboardElement>;
       'p-login': LocalJSX.PLogin & JSXBase.HTMLAttributes<HTMLPLoginElement>;
       'p-register': LocalJSX.PRegister & JSXBase.HTMLAttributes<HTMLPRegisterElement>;
+      'p-settings': LocalJSX.PSettings & JSXBase.HTMLAttributes<HTMLPSettingsElement>;
     }
   }
 }

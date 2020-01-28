@@ -1,14 +1,14 @@
 import { Component, h } from "@stencil/core";
 
 @Component({
-  tag: "p-dashboard",
-  styleUrl: "p-dashboard.css"
+  tag: "p-settings",
+  styleUrl: "p-settings.css"
 })
-export class PDashboard {
+export class PSettings {
   render() {
     return (
       <div>
-        <h2>Dashboard</h2>
+        <h2>Settings</h2>
       </div>
     );
   }

@@ -34,9 +34,10 @@ export class PRegister {
       this.Email,
       this.Password
     );
+    if (!isUserRegistered)
+      alert("Sorry! Registration Failed. Please try a little later.");
 
-    if (isUserRegistered) this.history.push("/login");
-    else alert("Sorry! Registration Failed. Please try a little later.");
+    this.history.push("/login", {});
   }
   render() {
     return (
