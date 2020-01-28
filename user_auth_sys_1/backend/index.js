@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const PORT = 5000;
 
 const auth = require("./routes/auth");
+const dashboard = require("./routes/dashboard");
 
 dotenv.config();
 mongoose.connect(
@@ -17,6 +18,7 @@ mongoose.connect(
 
 app.use(express.json());
 app.use("/user", auth);
+app.use("/dashboard", dashboard);
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
 // app.get("/", (req, res) => {

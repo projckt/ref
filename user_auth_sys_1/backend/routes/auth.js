@@ -57,17 +57,19 @@ router.post("/login", async (req, res) => {
   let user = await User.findOne({ Email: req.body.Email });
   if (!user) {
     resp.status = "failed";
-    resp.msg = "Email is wrong";
+    resp.msg = "Email or Password is wrong";
     return res.status(400).json(resp);
   }
   const isPassValid = await argon.verify(user.Password, req.body.Password);
   if (!isPassValid) {
     resp.status = "failed";
-    resp.msg = "Password is wrong";
+    resp.msg = "Email or Password is wrong";
     return res.status(400).json(resp);
   }
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.header("auth-token", token).send(token);
+  const token = jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET);
+  resp.status = "success";
+  resp.msg = "User Logged In";
+  res.header("auth-token", token).json(resp);
 });
 
 module.exports = router;
