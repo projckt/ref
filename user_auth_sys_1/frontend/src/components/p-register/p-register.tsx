@@ -6,14 +6,10 @@ import { utils } from "../../global/utils";
   styleUrl: "p-register.css"
 })
 export class PRegister {
-  private FirstName: string;
-  private LastName: string;
-  private Email: string;
-  private Password: string;
-
-  componentWillLoad() {
-    utils.test();
-  }
+  private FirstName: string = "";
+  private LastName: string = "";
+  private Email: string = "";
+  private Password: string = "";
 
   handleFirstNameIp(event) {
     this.FirstName = event.target.value;

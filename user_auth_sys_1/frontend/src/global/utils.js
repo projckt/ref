@@ -1,12 +1,11 @@
 export const utils = {
   registerUser: async (FirstName, LastName, Email, Password) => {
     let payload = {
-      FirstName: FirstName,
-      LastName: LastName,
+      First_Name: FirstName,
+      Last_Name: LastName,
       Email: Email,
       Password: Password
     };
-
     let url = "http://localhost:5000/user/register";
     let options = {
       method: "POST",
