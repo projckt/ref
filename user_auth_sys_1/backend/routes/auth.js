@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const argon = require("argon2");
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 const { registerValidation, loginValidation } = require("../validation");
 
 router.post("/register", async (req, res) => {
@@ -65,7 +66,8 @@ router.post("/login", async (req, res) => {
     resp.msg = "Password is wrong";
     return res.status(400).json(resp);
   }
-  res.send("logged in");
+  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  res.header("auth-token", token).send(token);
 });
 
 module.exports = router;
