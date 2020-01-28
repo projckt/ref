@@ -7,13 +7,17 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 export namespace Components {
   interface AppRoot {}
   interface PDashboard {}
   interface PLogin {}
-  interface PRegister {}
+  interface PRegister {
+    'history': RouterHistory;
+  }
 }
 
 declare global {
@@ -54,7 +58,9 @@ declare namespace LocalJSX {
   interface AppRoot {}
   interface PDashboard {}
   interface PLogin {}
-  interface PRegister {}
+  interface PRegister {
+    'history'?: RouterHistory;
+  }
 
   interface IntrinsicElements {
     'app-root': AppRoot;

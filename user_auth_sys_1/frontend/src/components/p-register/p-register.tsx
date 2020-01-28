@@ -1,11 +1,13 @@
-import { Component, h } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 import { utils } from "../../global/utils";
+import { RouterHistory } from "@stencil/router";
 
 @Component({
   tag: "p-register",
   styleUrl: "p-register.css"
 })
 export class PRegister {
+  @Prop() history: RouterHistory;
   private FirstName: string = "";
   private LastName: string = "";
   private Email: string = "";
@@ -26,12 +28,15 @@ export class PRegister {
 
   handleRegisterClick(event) {
     event.preventDefault();
-    utils.registerUser(
+    let isUserRegistered = utils.registerUser(
       this.FirstName,
       this.LastName,
       this.Email,
       this.Password
     );
+
+    if (isUserRegistered) this.history.push("/login");
+    else alert("Sorry! Registration Failed. Please try a little later.");
   }
   render() {
     return (
@@ -60,7 +65,7 @@ export class PRegister {
         <br />
         <br />
         <input
-          type="email"
+          type="password"
           placeholder="Password"
           value=""
           onInput={(event: UIEvent) => this.handlePasswordIp(event)}

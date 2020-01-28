@@ -21,9 +21,9 @@ export const utils = {
       .then(res => res.json())
       .then(data => {
         if (data.status === "success") {
-          console.log(data);
+          return true;
         } else if (data.status === "failed") {
-          console.log(data.msg);
+          return false;
         }
       })
       .catch(error => {
