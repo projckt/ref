@@ -15,6 +15,7 @@ export class AppRoot {
           <stencil-route url="/login" component="p-login" />
           <stencil-route url="/dashboard" component="p-dashboard" />
           <stencil-route url="/settings" component="p-settings" />
+          <stencil-route component="p-catchall" />
         </stencil-route-switch>
       </stencil-router>
     );

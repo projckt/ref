@@ -9,6 +9,10 @@ export class PDashboard {
     return (
       <div>
         <h2>Dashboard</h2>
+        <br />
+        <p>Hello Name</p>
+        <br />
+        <button>Logout</button>
       </div>
     );
   }

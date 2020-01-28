@@ -9,6 +9,10 @@ export class PSettings {
     return (
       <div>
         <h2>Settings</h2>
+        <br />
+        <p>Hello Name</p>
+        <br />
+        <button>Logout</button>
       </div>
     );
   }
