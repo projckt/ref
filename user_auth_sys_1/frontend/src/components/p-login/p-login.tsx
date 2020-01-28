@@ -5,17 +5,45 @@ import { Component, h } from "@stencil/core";
   styleUrl: "p-login.css"
 })
 export class PLogin {
+  private email: string = "";
+  private password: string = "";
+
+  handleEmailIp(event) {
+    this.email = event.target.value;
+    console.log(`Email: ${this.email}`);
+  }
+
+  handlePasswordIp(event) {
+    this.password = event.target.value;
+    console.log(`Password: ${this.password}`);
+  }
+
+  handleLoginClick(event) {
+    event.preventDefault();
+    console.log(`Button Click`);
+  }
+
   render() {
     return (
       <div>
         <h2>Login</h2>
-        <input type="email" placeholder="Enter Email"></input>
+        <input
+          type="email"
+          placeholder="Enter Email"
+          onInput={(event: UIEvent) => this.handleEmailIp(event)}
+        ></input>
         <br />
         <br />
-        <input type="password" placeholder="Enter Password"></input>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          onInput={(event: UIEvent) => this.handlePasswordIp(event)}
+        ></input>
         <br />
         <br />
-        <button>Login</button>
+        <button onClick={(event: UIEvent) => this.handleLoginClick(event)}>
+          Login
+        </button>
         <br />
         <br />
         <p class="subtext">
