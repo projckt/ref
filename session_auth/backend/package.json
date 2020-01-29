@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc",
-    "dev": "ts-node-dev --transpileOnly --no-notify src"
+    "dev": "eval $(cat .env) ts-node-dev --transpileOnly --no-notify src"
   },
   "keywords": [],
   "author": "",
