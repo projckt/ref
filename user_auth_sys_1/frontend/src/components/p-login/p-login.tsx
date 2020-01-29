@@ -1,24 +1,30 @@
 import { Component, h } from "@stencil/core";
+import { utils } from "../../global/utils";
 
 @Component({
   tag: "p-login",
   styleUrl: "p-login.css"
 })
 export class PLogin {
-  private email: string = "";
-  private password: string = "";
+  private Email: string = "";
+  private Password: string = "";
 
   handleEmailIp(event) {
-    this.email = event.target.value;
+    this.Email = event.target.value;
   }
 
   handlePasswordIp(event) {
-    this.password = event.target.value;
+    this.Password = event.target.value;
   }
 
   handleLoginClick(event) {
     event.preventDefault();
-    console.log(`email: ${this.email} , password: ${this.password}`);
+    let isUserLoggedIn = utils.loginUser(this.Email, this.Password);
+    if (isUserLoggedIn) {
+      console.log("user logged in");
+    } else {
+      console.log("not logged in");
+    }
   }
 
   render() {
