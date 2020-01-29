@@ -42,12 +42,13 @@ router.post("/register", async (req, res) => {
   } catch (err) {
     resp.status = "failed";
     resp.msg = err;
-    res.json(resp);
     return res.status(400).json(resp);
   }
 });
 
 router.post("/login", async (req, res) => {
+  console.log(`Login Body::::`);
+  console.log(req.body);
   let resp = {};
   let { error } = loginValidation(req.body);
   if (error) {
@@ -70,7 +71,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET);
   resp.status = "success";
   resp.msg = "User Logged In";
-  res.header("auth-token", token).json(resp);
+  return res.header("X-Auth-Token", token).json(resp);
 });
 
 module.exports = router;

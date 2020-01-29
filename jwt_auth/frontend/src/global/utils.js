@@ -44,10 +44,7 @@ export const utils = {
       }
     };
     await fetch(url, options)
-      .then(res => {
-        console.log(`token: ${res.headers.get("content-type")}`);
-        res.json();
-      })
+      .then(res => res.json())
       .then(data => {
         if (data.status === "success") {
           return true;

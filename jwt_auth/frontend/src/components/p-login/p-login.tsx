@@ -1,5 +1,5 @@
 import { Component, h } from "@stencil/core";
-import { utils } from "../../global/utils";
+// import { utils } from "../../global/utils";
 
 @Component({
   tag: "p-login",
@@ -19,12 +19,42 @@ export class PLogin {
 
   handleLoginClick(event) {
     event.preventDefault();
-    let isUserLoggedIn = utils.loginUser(this.Email, this.Password);
-    if (isUserLoggedIn) {
-      console.log("user logged in");
-    } else {
-      console.log("not logged in");
-    }
+    // let isUserLoggedIn = utils.loginUser(this.Email, this.Password);
+    // if (isUserLoggedIn) {
+    //   console.log("user logged in");
+    // } else {
+    //   console.log("not logged in");
+    // }
+    // console.log(isUserLoggedIn);
+    let payload = { Email: this.Email, Password: this.Password };
+    let url = "http://localhost:5000/user/login";
+    let options = {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
+    fetch(url, options)
+      .then(res => {
+        let auth = res.headers.get("X-Auth-Token");
+        console.log(`Auth Token: ${auth}`);
+        return res.json();
+      })
+      .then(data => {
+        if (data.status === "success") {
+          console.log("user logged in");
+          // return true;
+        } else if (data.status === "failed") {
+          console.log("login failed");
+          // return false;
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
