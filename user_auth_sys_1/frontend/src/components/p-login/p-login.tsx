@@ -18,6 +18,7 @@ export class PLogin {
 
   handleLoginClick(event) {
     event.preventDefault();
+    console.log(`email: ${this.email} , password: ${this.password}`);
   }
 
   render() {
