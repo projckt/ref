@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
 import { RedisOptions } from "ioredis";
+import dotenv from "dotenv";
 dotenv.config();
 
 export const REDIS_OPTIONS: RedisOptions = {
