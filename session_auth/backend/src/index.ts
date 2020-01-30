@@ -1,18 +1,16 @@
 import express from "express";
-const app = express();
+import session from "express-session";
+import connectRedis from "connect-redis";
+import Redis from "ioredis";
+import { REDIS_OPTIONS } from "./config";
 
-const { ENV, PORT, OLO, GELLO } = process.env;
+const { ENV, PORT, REDIS_HOST, REDIS_PORT } = process.env;
+const RedisStore = connectRedis(session);
+const app = express();
+const client = new Redis(REDIS_OPTIONS);
 
 app.get("/", (req, res) => {
-  let resp: object = {
-    status: "success",
-    message: "YoYo"
-  };
-  res.json(resp);
-  console.log(` ENV: ${ENV}`);
-  console.log(` PORT: ${PORT}`);
-  console.log(` OLO: ${OLO}`);
-  console.log(` GELLO: ${GELLO}`);
+  res.send("working");
 });
 
 app.listen(PORT, () => {
