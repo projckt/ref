@@ -1,6 +1,7 @@
-const { ENV, PORT } = process.env;
+import dotenv from "dotenv";
+dotenv.config();
 
 export const APP_OPTIONS = {
-  env: ENV,
-  port: PORT
+  env: process.env.APP_ENV,
+  port: process.env.APP_PORT
 };

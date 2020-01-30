@@ -1,9 +1,8 @@
+import dotenv from "dotenv";
 import { RedisOptions } from "ioredis";
-
-const { REDIS_PORT, REDIS_HOST, REDIS_PASSWORD } = process.env;
+dotenv.config();
 
 export const REDIS_OPTIONS: RedisOptions = {
-  port: +REDIS_PORT,
-  host: REDIS_HOST,
-  password: REDIS_PASSWORD
+  host: process.env.REDIS_HOST,
+  port: +process.env.REDIS_PORT
 };
