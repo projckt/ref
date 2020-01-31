@@ -3,6 +3,7 @@ import session from "express-session";
 import connectRedis from "connect-redis";
 import Redis from "ioredis";
 import mongoose from "mongoose";
+import { register } from "./routes";
 
 import {
   APP_OPTIONS,
@@ -20,17 +21,14 @@ import {
   const app = express();
   const client = new Redis(REDIS_OPTIONS);
 
+  app.use(express.json());
   app.use(
     session({
       ...SESSION_OPTIONS,
       store: new RedisStore({ client })
     })
   );
-
-  app.get("/", (req, res) => {
-    res.send("working");
-  });
-
+  app.use(register);
   app.listen(APP_OPTIONS.port, () => {
     console.log(`Server is listening on PORT: ${APP_OPTIONS.port}`);
   });
