@@ -3,10 +3,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const SESSION_OPTIONS: SessionOptions = {
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET!,
   name: process.env.SESSION_NAME,
   cookie: {
-    maxAge: +process.env.SESSION_IDLE_TIMEOUT,
+    maxAge: +process.env.SESSION_IDLE_TIMEOUT!,
     //secure: true,
     sameSite: true
   },
