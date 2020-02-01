@@ -1,6 +1,6 @@
 import Joi from "@hapi/joi";
 
-const loginValidation = data => {
+const loginValidation = (reqBody: Request) => {
   const schema = Joi.object({
     email: Joi.string()
       .email()
@@ -14,7 +14,7 @@ const loginValidation = data => {
       .max(256)
       .required()
   });
-  return schema.validate(data);
+  return schema.validate(reqBody);
 };
 
 export default loginValidation;

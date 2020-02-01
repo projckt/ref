@@ -1,6 +1,7 @@
 import Joi from "@hapi/joi";
+import { Request } from "express";
 
-const registerValidation = data => {
+const registerValidation = (reqBody: Request) => {
   const schema = Joi.object({
     fname: Joi.string()
       .min(1)
@@ -25,7 +26,7 @@ const registerValidation = data => {
       .required(),
     passwordConfirmation: Joi.valid(Joi.ref("password")).required()
   });
-  return schema.validate(data);
+  return schema.validate(reqBody);
 };
 
 export default registerValidation;
