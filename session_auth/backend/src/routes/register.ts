@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { registerSchema } from "../validation";
 import { User } from "../models/User";
-import { logIn } from "../helpers/auth";
+import { logIn } from "../helpers";
 const router = Router();
 
 router.post("/register", async (req, res) => {
