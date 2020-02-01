@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { registerSchema } from "../validation";
 import { User } from "../models/User";
+import { logIn } from "../helpers/auth";
 const router = Router();
 
 router.post("/register", async (req, res) => {
@@ -23,9 +24,9 @@ router.post("/register", async (req, res) => {
   });
   let resp = {
     status: "success",
-    msg: "User Successfully Created",
-    payload: user._id
+    msg: "User Successfully Created"
   };
+  logIn(req, user._id);
   res.json(resp);
 });
 
