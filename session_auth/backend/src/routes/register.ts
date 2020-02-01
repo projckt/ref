@@ -1,13 +1,20 @@
 import { Router } from "express";
-import { registerSchema } from "../validation";
 import { User } from "../models/User";
 import { logIn } from "../helpers";
 import { guest } from "../middleware";
+import { registerValidation } from "../validation";
 import * as argon from "argon2";
 const router = Router();
 
 router.post("/register", guest, async (req, res) => {
-  await registerSchema.validateAsync(req.body, { abortEarly: false });
+  let { error } = registerValidation(req.body);
+  if (error) {
+    let resp = {
+      status: "failed",
+      msg: error.details[0].message
+    };
+    return res.status(400).json(resp);
+  }
   const { fname, lname, email, passwordConfirmation } = req.body;
   let password = req.body.password;
   let isUserRegistered = await User.exists({ email });
