@@ -4,7 +4,6 @@ import connectRedis from "connect-redis";
 import Redis from "ioredis";
 import mongoose from "mongoose";
 import { register, landing } from "./routes";
-
 import {
   APP_OPTIONS,
   REDIS_OPTIONS,
