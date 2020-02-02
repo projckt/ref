@@ -22,8 +22,8 @@ router.post("/login", guest, async (req, res) => {
       status: "failed",
       msg: "Invalid email or password"
     };
+    return res.status(400).json(resp);
   }
-
   logIn(req, user!._id);
   let resp = {
     status: "success",
