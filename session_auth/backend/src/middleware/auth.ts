@@ -8,7 +8,11 @@ export const guest = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export const user = (req: Request, res: Response, next: NextFunction) => {
+export const isUserLogged = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   if (isLoggedIn(req)) {
     return next(new Error("you must be logged in!"));
   }
