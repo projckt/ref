@@ -1,11 +1,18 @@
 import { Router } from "express";
 import { logIn } from "../helpers";
-import { isUserGuest } from "../middleware";
+import { isUserLogged } from "../middleware";
 import { loginValidation } from "../validation";
 import { User } from "../models";
 
 const router = Router();
-router.post("/login", isUserGuest, async (req, res) => {
+router.post("/login", isUserLogged, async (req, res) => {
+  if (res.locals.isUserLogged) {
+    let resp = {
+      status: "failed",
+      message: "You are already logged in"
+    };
+    return res.status(400).json(resp);
+  }
   let { error } = loginValidation(req.body);
   if (error) {
     let resp = {
@@ -14,7 +21,6 @@ router.post("/login", isUserGuest, async (req, res) => {
     };
     return res.status(400).json(resp);
   }
-
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user || !(await user.passwordMatch(password))) {

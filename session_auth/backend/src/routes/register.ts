@@ -1,12 +1,19 @@
 import { Router } from "express";
 import { User } from "../models/User";
 import { logIn } from "../helpers";
-import { isUserGuest } from "../middleware";
+import { isUserLogged } from "../middleware";
 import { registerValidation } from "../validation";
 import * as argon from "argon2";
 const router = Router();
 
-router.post("/register", isUserGuest, async (req, res) => {
+router.post("/register", isUserLogged, async (req, res) => {
+  if (res.locals.isUserLogged) {
+    let resp = {
+      status: "failed",
+      message: "You are already registered"
+    };
+    return res.status(400).json(resp);
+  }
   let { error } = registerValidation(req.body);
   if (error) {
     let resp = {

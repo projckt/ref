@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-export const checkUserIDinSession = (req: Request) => {
+export const isUserIDinSession = (req: Request) => {
   return !!req.session!.userId;
 };
 export const logIn = (req: Request, userId: string) => {
@@ -12,6 +12,11 @@ export const logOut = (req: Request, res: Response) => {
       if (err) reject(err);
       res.clearCookie(process.env.SESSION_NAME!);
       resolve();
+      let resp = {
+        status: "success",
+        msg: "User Logged Out"
+      };
+      res.json(resp);
     });
   });
 };
