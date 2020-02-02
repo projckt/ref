@@ -19,7 +19,7 @@ export const isUserLogged = (
   next: NextFunction
 ) => {
   let isLogged = checkUserIDinSession(req);
-  if (isLogged) {
+  if (!isLogged) {
     return next(new Error("you must be logged in!"));
   }
   next();
