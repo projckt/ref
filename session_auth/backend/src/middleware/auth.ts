@@ -1,8 +1,13 @@
 import { Request, Response, NextFunction } from "express";
-import { isLoggedIn } from "../helpers";
+import { checkUserIDinSession } from "../helpers";
 
-export const guest = (req: Request, res: Response, next: NextFunction) => {
-  if (isLoggedIn(req)) {
+export const isUserGuest = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  let isGuest = checkUserIDinSession(req);
+  if (isGuest) {
     return next(new Error("you are already logged in!"));
   }
   next();
@@ -13,7 +18,8 @@ export const isUserLogged = (
   res: Response,
   next: NextFunction
 ) => {
-  if (isLoggedIn(req)) {
+  let isLogged = checkUserIDinSession(req);
+  if (isLogged) {
     return next(new Error("you must be logged in!"));
   }
   next();

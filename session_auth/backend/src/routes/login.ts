@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { logIn } from "../helpers";
-import { guest } from "../middleware";
+import { isUserGuest } from "../middleware";
 import { loginValidation } from "../validation";
 import { User } from "../models";
 
 const router = Router();
-router.post("/login", guest, async (req, res) => {
+router.post("/login", isUserGuest, async (req, res) => {
   let { error } = loginValidation(req.body);
   if (error) {
     let resp = {
@@ -27,7 +27,7 @@ router.post("/login", guest, async (req, res) => {
   logIn(req, user!._id);
   let resp = {
     status: "success",
-    msg: "OK"
+    msg: "User Logged In"
   };
   res.json(resp);
 });

@@ -1,12 +1,12 @@
 import { Router } from "express";
 import { User } from "../models/User";
 import { logIn } from "../helpers";
-import { guest } from "../middleware";
+import { isUserGuest } from "../middleware";
 import { registerValidation } from "../validation";
 import * as argon from "argon2";
 const router = Router();
 
-router.post("/register", guest, async (req, res) => {
+router.post("/register", isUserGuest, async (req, res) => {
   let { error } = registerValidation(req.body);
   if (error) {
     let resp = {
