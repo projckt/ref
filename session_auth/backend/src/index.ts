@@ -3,7 +3,7 @@ import session from "express-session";
 import connectRedis from "connect-redis";
 import Redis from "ioredis";
 import mongoose from "mongoose";
-import { register, landing } from "./routes";
+import { register, landing, login, logout } from "./routes";
 import {
   APP_OPTIONS,
   REDIS_OPTIONS,
@@ -29,6 +29,8 @@ import {
   );
   app.use(register);
   app.use(landing);
+  app.use(login);
+  app.use(logout);
   app.listen(APP_OPTIONS.port, () => {
     console.log(`Server is listening on PORT: ${APP_OPTIONS.port}`);
   });

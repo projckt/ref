@@ -1,10 +1,12 @@
 import { model, Schema, Document } from "mongoose";
+import * as argon from "argon2";
 
 interface UserDocument extends Document {
   fname: string;
   lname: string;
   email: string;
   password: string;
+  passwordMatch: (password: string) => Promise<boolean>;
 }
 
 const userSchema = new Schema(
@@ -42,5 +44,9 @@ const userSchema = new Schema(
     timestamps: true
   }
 );
+
+userSchema.methods.passwordMatch = async function(password: string) {
+  return await argon.verify(this.password, password);
+};
 
 export const User = model<UserDocument>("User", userSchema);
