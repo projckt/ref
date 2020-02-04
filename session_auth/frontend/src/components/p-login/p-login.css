@@ -1,0 +1,4 @@
+.subtext {
+  font-size: var(--subtext-font-size);
+  margin: var(--subtext-margin);
+}

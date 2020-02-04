@@ -8,55 +8,85 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 
 export namespace Components {
-  interface AppHome {}
-  interface AppProfile {
-    'match': MatchResults;
-  }
   interface AppRoot {}
+  interface PCatchall {}
+  interface PDashboard {}
+  interface PLogin {}
+  interface PRegister {
+    'history': RouterHistory;
+  }
+  interface PSettings {}
 }
 
 declare global {
 
-
-  interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
-  };
-
-  interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+
+  interface HTMLPCatchallElement extends Components.PCatchall, HTMLStencilElement {}
+  var HTMLPCatchallElement: {
+    prototype: HTMLPCatchallElement;
+    new (): HTMLPCatchallElement;
+  };
+
+  interface HTMLPDashboardElement extends Components.PDashboard, HTMLStencilElement {}
+  var HTMLPDashboardElement: {
+    prototype: HTMLPDashboardElement;
+    new (): HTMLPDashboardElement;
+  };
+
+  interface HTMLPLoginElement extends Components.PLogin, HTMLStencilElement {}
+  var HTMLPLoginElement: {
+    prototype: HTMLPLoginElement;
+    new (): HTMLPLoginElement;
+  };
+
+  interface HTMLPRegisterElement extends Components.PRegister, HTMLStencilElement {}
+  var HTMLPRegisterElement: {
+    prototype: HTMLPRegisterElement;
+    new (): HTMLPRegisterElement;
+  };
+
+  interface HTMLPSettingsElement extends Components.PSettings, HTMLStencilElement {}
+  var HTMLPSettingsElement: {
+    prototype: HTMLPSettingsElement;
+    new (): HTMLPSettingsElement;
+  };
   interface HTMLElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
-    'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'p-catchall': HTMLPCatchallElement;
+    'p-dashboard': HTMLPDashboardElement;
+    'p-login': HTMLPLoginElement;
+    'p-register': HTMLPRegisterElement;
+    'p-settings': HTMLPSettingsElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface AppHome {}
-  interface AppProfile {
-    'match'?: MatchResults;
-  }
   interface AppRoot {}
+  interface PCatchall {}
+  interface PDashboard {}
+  interface PLogin {}
+  interface PRegister {
+    'history'?: RouterHistory;
+  }
+  interface PSettings {}
 
   interface IntrinsicElements {
-    'app-home': AppHome;
-    'app-profile': AppProfile;
     'app-root': AppRoot;
+    'p-catchall': PCatchall;
+    'p-dashboard': PDashboard;
+    'p-login': PLogin;
+    'p-register': PRegister;
+    'p-settings': PSettings;
   }
 }
 
@@ -66,9 +96,12 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-      'app-profile': LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'p-catchall': LocalJSX.PCatchall & JSXBase.HTMLAttributes<HTMLPCatchallElement>;
+      'p-dashboard': LocalJSX.PDashboard & JSXBase.HTMLAttributes<HTMLPDashboardElement>;
+      'p-login': LocalJSX.PLogin & JSXBase.HTMLAttributes<HTMLPLoginElement>;
+      'p-register': LocalJSX.PRegister & JSXBase.HTMLAttributes<HTMLPRegisterElement>;
+      'p-settings': LocalJSX.PSettings & JSXBase.HTMLAttributes<HTMLPSettingsElement>;
     }
   }
 }
