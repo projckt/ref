@@ -19,15 +19,8 @@ export class PLogin {
 
   handleLoginClick(event) {
     event.preventDefault();
-    // let isUserLoggedIn = utils.loginUser(this.Email, this.Password);
-    // if (isUserLoggedIn) {
-    //   console.log("user logged in");
-    // } else {
-    //   console.log("not logged in");
-    // }
-    // console.log(isUserLoggedIn);
     let payload = { Email: this.Email, Password: this.Password };
-    let url = "http://localhost:5000/user/login";
+    let url = "http://localhost:1945/login";
     let options = {
       method: "POST",
       body: JSON.stringify(payload),
@@ -39,18 +32,17 @@ export class PLogin {
     };
     fetch(url, options)
       .then(res => {
-        let auth = res.headers.get("X-Auth-Token");
-        console.log(`Auth Token: ${auth}`);
-        return res.json();
+        res.json();
       })
       .then(data => {
-        if (data.status === "success") {
-          console.log("user logged in");
-          // return true;
-        } else if (data.status === "failed") {
-          console.log("login failed");
-          // return false;
-        }
+        // if (data.status === "success") {
+        //   console.log("user logged in");
+        //   // return true;
+        // } else if (data.status === "failed") {
+        //   console.log("login failed");
+        //   // return false;
+        // }
+        console.log(data);
       })
       .catch(error => {
         console.log(error);
