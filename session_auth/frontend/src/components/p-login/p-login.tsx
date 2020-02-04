@@ -6,20 +6,20 @@ import { Component, h } from "@stencil/core";
   styleUrl: "p-login.css"
 })
 export class PLogin {
-  private Email: string = "";
-  private Password: string = "";
+  private email: string = "";
+  private password: string = "";
 
   handleEmailIp(event) {
-    this.Email = event.target.value;
+    this.email = event.target.value;
   }
 
   handlePasswordIp(event) {
-    this.Password = event.target.value;
+    this.password = event.target.value;
   }
 
   handleLoginClick(event) {
     event.preventDefault();
-    let payload = { Email: this.Email, Password: this.Password };
+    let payload = { email: this.email, password: this.password };
     let url = "http://localhost:1945/login";
     let options = {
       method: "POST",
@@ -32,7 +32,7 @@ export class PLogin {
     };
     fetch(url, options)
       .then(res => {
-        res.json();
+        return res.json();
       })
       .then(data => {
         // if (data.status === "success") {
