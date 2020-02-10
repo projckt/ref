@@ -43,7 +43,7 @@ router.post("/register", isUserLogged, async (req, res) => {
     status: "success",
     msg: "User Successfully Created"
   };
-  logIn(req, user._id);
+  logIn(req, res, user._id);
   res.json(resp);
 });
 

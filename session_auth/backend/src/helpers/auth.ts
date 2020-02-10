@@ -7,7 +7,7 @@ export const logIn = (req: Request, res: Response, userId: string) => {
   req.session!.userId = userId;
   res.cookie("is_logged", true, {
     expires: new Date(Date.now() + 1000 * 60 * 60),
-    httpOnly: true
+    httpOnly: false
   });
 };
 export const logOut = (req: Request, res: Response) => {
