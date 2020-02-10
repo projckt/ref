@@ -10,7 +10,7 @@ export class AppRoot {
     return (
       <stencil-router>
         <stencil-route-switch scrollTopOffset={0}>
-          <stencil-route url="/" component="p-login" exact={true} />
+          <stencil-route url="/" component="p-home" exact={true} />
           <stencil-route url="/register" component="p-register" />
           <stencil-route url="/login" component="p-login" />
           {/* <stencil-route url="/dashboard" component="p-dashboard" />

@@ -15,6 +15,7 @@ export namespace Components {
   interface AppRoot {}
   interface PCatchall {}
   interface PDashboard {}
+  interface PHome {}
   interface PLogin {}
   interface PRegister {
     'history': RouterHistory;
@@ -43,6 +44,12 @@ declare global {
     new (): HTMLPDashboardElement;
   };
 
+  interface HTMLPHomeElement extends Components.PHome, HTMLStencilElement {}
+  var HTMLPHomeElement: {
+    prototype: HTMLPHomeElement;
+    new (): HTMLPHomeElement;
+  };
+
   interface HTMLPLoginElement extends Components.PLogin, HTMLStencilElement {}
   var HTMLPLoginElement: {
     prototype: HTMLPLoginElement;
@@ -64,6 +71,7 @@ declare global {
     'app-root': HTMLAppRootElement;
     'p-catchall': HTMLPCatchallElement;
     'p-dashboard': HTMLPDashboardElement;
+    'p-home': HTMLPHomeElement;
     'p-login': HTMLPLoginElement;
     'p-register': HTMLPRegisterElement;
     'p-settings': HTMLPSettingsElement;
@@ -74,6 +82,7 @@ declare namespace LocalJSX {
   interface AppRoot {}
   interface PCatchall {}
   interface PDashboard {}
+  interface PHome {}
   interface PLogin {}
   interface PRegister {
     'history'?: RouterHistory;
@@ -84,6 +93,7 @@ declare namespace LocalJSX {
     'app-root': AppRoot;
     'p-catchall': PCatchall;
     'p-dashboard': PDashboard;
+    'p-home': PHome;
     'p-login': PLogin;
     'p-register': PRegister;
     'p-settings': PSettings;
@@ -99,6 +109,7 @@ declare module "@stencil/core" {
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'p-catchall': LocalJSX.PCatchall & JSXBase.HTMLAttributes<HTMLPCatchallElement>;
       'p-dashboard': LocalJSX.PDashboard & JSXBase.HTMLAttributes<HTMLPDashboardElement>;
+      'p-home': LocalJSX.PHome & JSXBase.HTMLAttributes<HTMLPHomeElement>;
       'p-login': LocalJSX.PLogin & JSXBase.HTMLAttributes<HTMLPLoginElement>;
       'p-register': LocalJSX.PRegister & JSXBase.HTMLAttributes<HTMLPRegisterElement>;
       'p-settings': LocalJSX.PSettings & JSXBase.HTMLAttributes<HTMLPSettingsElement>;
