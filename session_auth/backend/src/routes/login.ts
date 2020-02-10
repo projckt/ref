@@ -30,7 +30,7 @@ router.post("/login", isUserLogged, async (req, res) => {
     };
     return res.status(400).json(resp);
   }
-  logIn(req, user!._id);
+  logIn(req, res, user!._id);
   let resp = {
     status: "success",
     msg: "User Logged In"
