@@ -1,4 +1,5 @@
 import { Component, h } from "@stencil/core";
+import { check } from "../../global/utils";
 
 @Component({
   tag: "app-root",
@@ -6,6 +7,9 @@ import { Component, h } from "@stencil/core";
   shadow: true
 })
 export class AppRoot {
+  componentWillLoad() {
+    check.cookie.isLogged();
+  }
   render() {
     return (
       <stencil-router>
@@ -13,8 +17,6 @@ export class AppRoot {
           <stencil-route url="/" component="p-home" exact={true} />
           <stencil-route url="/register" component="p-register" />
           <stencil-route url="/login" component="p-login" />
-          {/* <stencil-route url="/dashboard" component="p-dashboard" />
-          <stencil-route url="/settings" component="p-settings" /> */}
           <PrivateRoute url="/dashboard" component="p-dashboard" />
           <stencil-route component="p-catchall" />
         </stencil-route-switch>
@@ -25,7 +27,7 @@ export class AppRoot {
 
 const PrivateRoute = ({ component, ...props }: { [key: string]: any }) => {
   const Component = component;
-  // const redirectUrl = props.failureRedirect || "/login";
+  const redirectUrl = props.failureRedirect || "/login";
   return (
     <stencil-route
       {...props}
@@ -33,7 +35,7 @@ const PrivateRoute = ({ component, ...props }: { [key: string]: any }) => {
         // if (auth.isAuthenticated) {
         //   return <Component {...props} {...props.componentProps}></Component>;
         // }
-        return <stencil-router-redirect url="/login"></stencil-router-redirect>;
+        // return <stencil-router-redirect url="/login"></stencil-router-redirect>;
         // return <Component {...props} {...props.componentProps}></Component>;
       }}
     />

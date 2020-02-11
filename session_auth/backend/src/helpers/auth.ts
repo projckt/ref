@@ -6,7 +6,7 @@ export const isUserIDinSession = (req: Request) => {
 export const logIn = (req: Request, res: Response, userId: string) => {
   req.session!.userId = userId;
   res.cookie("is_logged", true, {
-    expires: new Date(Date.now() + 1000 * 60 * 60),
+    expires: new Date(Date.now() + 31536000),
     httpOnly: false
   });
 };

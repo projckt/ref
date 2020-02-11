@@ -54,7 +54,7 @@ export class PRegister {
       })
       .then(data => {
         if (data.status === "success") this.history.push("/dashboard", {});
-        else alert("Registration failed!");
+        console.log(data);
       })
       .catch(error => {
         console.log(error);
