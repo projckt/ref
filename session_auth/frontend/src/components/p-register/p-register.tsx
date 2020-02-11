@@ -8,31 +8,36 @@ import { RouterHistory } from "@stencil/router";
 })
 export class PRegister {
   @Prop() history: RouterHistory;
-  private FirstName: string = "";
-  private LastName: string = "";
-  private Email: string = "";
-  private Password: string = "";
+  private firstName: string = "";
+  private lastName: string = "";
+  private email: string = "";
+  private password: string = "";
+  private passwordConfirmation: string = "";
 
   handleFirstNameIp(event) {
-    this.FirstName = event.target.value;
+    this.firstName = event.target.value;
   }
   handleLastNameIp(event) {
-    this.LastName = event.target.value;
+    this.lastName = event.target.value;
   }
   handleEmailIp(event) {
-    this.Email = event.target.value;
+    this.email = event.target.value;
   }
   handlePasswordIp(event) {
-    this.Password = event.target.value;
+    this.password = event.target.value;
+  }
+  handlePasswordConfirmationIp(event) {
+    this.passwordConfirmation = event.target.value;
   }
 
   handleRegisterClick(event) {
     event.preventDefault();
     let isUserRegistered = utils.registerUser(
-      this.FirstName,
-      this.LastName,
-      this.Email,
-      this.Password
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.passwordConfirmation
     );
     if (!isUserRegistered)
       alert("Sorry! Registration Failed. Please try a little later.");
@@ -70,6 +75,14 @@ export class PRegister {
           placeholder="Password"
           value=""
           onInput={(event: UIEvent) => this.handlePasswordIp(event)}
+        ></input>
+        <br />
+        <br />
+        <input
+          type="text"
+          placeholder="Confirm Password"
+          value=""
+          onInput={(event: UIEvent) => this.handlePasswordConfirmationIp(event)}
         ></input>
         <br />
         <br />

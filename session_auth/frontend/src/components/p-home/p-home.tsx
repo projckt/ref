@@ -5,6 +5,10 @@ import { Component, h } from "@stencil/core";
   styleUrl: "p-home.css"
 })
 export class PHome {
+  componentWillLoad() {
+    console.log(`cookie: ${document.cookie}`);
+  }
+
   render() {
     return (
       <div>

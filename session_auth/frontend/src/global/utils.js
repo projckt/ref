@@ -1,12 +1,18 @@
 export const utils = {
-  registerUser: async (FirstName, LastName, Email, Password) => {
+  registerUser: async (
+    firstName,
+    lastName,
+    email,
+    password,
+    confirmPassword
+  ) => {
     let payload = {
       First_Name: FirstName,
       Last_Name: LastName,
       Email: Email,
       Password: Password
     };
-    let url = "http://localhost:5000/user/register";
+    let url = "http://localhost:1945/user/register";
     let options = {
       method: "POST",
       body: JSON.stringify(payload),
@@ -33,7 +39,7 @@ export const utils = {
 
   loginUser: async (Email, Password) => {
     let payload = { Email: Email, Password: Password };
-    let url = "http://localhost:5000/user/login";
+    let url = "http://localhost:1945/user/login";
     let options = {
       method: "POST",
       body: JSON.stringify(payload),

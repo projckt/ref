@@ -3,12 +3,12 @@ import { Request } from "express";
 
 const registerValidation = (reqBody: Request) => {
   const schema = Joi.object({
-    fname: Joi.string()
+    firstName: Joi.string()
       .min(1)
       .max(128)
       .trim()
       .required(),
-    lname: Joi.string()
+    lastName: Joi.string()
       .min(1)
       .max(128)
       .trim()

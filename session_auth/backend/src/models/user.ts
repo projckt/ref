@@ -2,8 +2,8 @@ import { model, Schema, Document } from "mongoose";
 import * as argon from "argon2";
 
 interface UserDocument extends Document {
-  fname: string;
-  lname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   passwordMatch: (password: string) => Promise<boolean>;
@@ -11,14 +11,14 @@ interface UserDocument extends Document {
 
 const userSchema = new Schema(
   {
-    fname: {
+    firstName: {
       type: String,
       required: true,
       unique: true,
       min: 1,
       max: 128
     },
-    lname: {
+    lastName: {
       type: String,
       required: true,
       unique: true,

@@ -22,7 +22,7 @@ router.post("/register", isUserLogged, async (req, res) => {
     };
     return res.status(400).json(resp);
   }
-  const { fname, lname, email, passwordConfirmation } = req.body;
+  const { firstName, lastName, email } = req.body;
   let password = req.body.password;
   let isUserRegistered = await User.exists({ email });
   if (isUserRegistered) {
@@ -34,16 +34,16 @@ router.post("/register", isUserLogged, async (req, res) => {
   }
   password = await argon.hash(password, { type: argon.argon2id });
   const user = await User.create({
-    fname,
-    lname,
+    firstName,
+    lastName,
     email,
     password
   });
+  logIn(req, res, user._id);
   let resp = {
     status: "success",
     msg: "User Successfully Created"
   };
-  logIn(req, res, user._id);
   res.json(resp);
 });
 
