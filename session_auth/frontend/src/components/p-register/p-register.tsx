@@ -41,8 +41,7 @@ export class PRegister {
     );
     if (!isUserRegistered)
       alert("Sorry! Registration Failed. Please try a little later.");
-
-    this.history.push("/login", {});
+    else this.history.push("/login", {});
   }
   render() {
     return (
@@ -79,7 +78,7 @@ export class PRegister {
         <br />
         <br />
         <input
-          type="text"
+          type="password"
           placeholder="Confirm Password"
           value=""
           onInput={(event: UIEvent) => this.handlePasswordConfirmationIp(event)}

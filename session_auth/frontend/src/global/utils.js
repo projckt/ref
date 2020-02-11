@@ -4,13 +4,15 @@ export const utils = {
     lastName,
     email,
     password,
-    confirmPassword
+    passwordConfirmation
   ) => {
+    console.log(`inside`);
     let payload = {
-      First_Name: FirstName,
-      Last_Name: LastName,
-      Email: Email,
-      Password: Password
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      passwordConfirmation: passwordConfirmation
     };
     let url = "http://localhost:1945/user/register";
     let options = {
@@ -22,7 +24,6 @@ export const utils = {
         "Access-Control-Allow-Origin": "*"
       }
     };
-
     await fetch(url, options)
       .then(res => res.json())
       .then(data => {
