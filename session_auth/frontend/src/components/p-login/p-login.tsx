@@ -1,5 +1,4 @@
 import { Component, h } from "@stencil/core";
-// import { utils } from "../../global/utils";
 
 @Component({
   tag: "p-login",
@@ -35,13 +34,6 @@ export class PLogin {
         return res.json();
       })
       .then(data => {
-        // if (data.status === "success") {
-        //   console.log("user logged in");
-        //   // return true;
-        // } else if (data.status === "failed") {
-        //   console.log("login failed");
-        //   // return false;
-        // }
         console.log(data);
       })
       .catch(error => {

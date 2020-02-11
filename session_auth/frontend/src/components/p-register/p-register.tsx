@@ -1,5 +1,4 @@
 import { Component, h, Prop } from "@stencil/core";
-import { utils } from "../../global/utils";
 import { RouterHistory } from "@stencil/router";
 
 @Component({
@@ -32,17 +31,36 @@ export class PRegister {
 
   handleRegisterClick(event) {
     event.preventDefault();
-    let isUserRegistered = utils.registerUser(
-      this.firstName,
-      this.lastName,
-      this.email,
-      this.password,
-      this.passwordConfirmation
-    );
-    if (!isUserRegistered)
-      alert("Sorry! Registration Failed. Please try a little later.");
-    else this.history.push("/login", {});
+    let payload = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      password: this.password,
+      passwordConfirmation: this.passwordConfirmation
+    };
+    let url = "http://localhost:1945/register";
+    let options = {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
+    fetch(url, options)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        if (data.status === "success") this.history.push("/dashboard", {});
+        else alert("Registration failed!");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
+
   render() {
     return (
       <div>
