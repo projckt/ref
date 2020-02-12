@@ -10,9 +10,9 @@ export class PDashboard {
       <div>
         <h2>Dashboard</h2>
         <br />
-        <p>Hello Name</p>
+        <p>Hello </p>
         <br />
-        <button>Logout</button>
+        <c-logout-btn></c-logout-btn>
       </div>
     );
   }

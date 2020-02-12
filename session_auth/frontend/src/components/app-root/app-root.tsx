@@ -18,6 +18,7 @@ export class AppRoot {
           <stencil-route url="/register" component="p-register" />
           <stencil-route url="/login" component="p-login" />
           <PrivateRoute url="/dashboard" component="p-dashboard" />
+          <PrivateRoute url="/settings" component="p-settings" />
           <stencil-route component="p-catchall" />
         </stencil-route-switch>
       </stencil-router>
@@ -27,16 +28,14 @@ export class AppRoot {
 
 const PrivateRoute = ({ component, ...props }: { [key: string]: any }) => {
   const Component = component;
-  const redirectUrl = props.failureRedirect || "/login";
   return (
     <stencil-route
       {...props}
       routeRender={() => {
-        // if (auth.isAuthenticated) {
-        //   return <Component {...props} {...props.componentProps}></Component>;
-        // }
-        // return <stencil-router-redirect url="/login"></stencil-router-redirect>;
-        // return <Component {...props} {...props.componentProps}></Component>;
+        if (check.cookie.isLogged()) {
+          return <Component {...props} {...props.componentProps}></Component>;
+        }
+        return <stencil-router-redirect url="/login"></stencil-router-redirect>;
       }}
     />
   );

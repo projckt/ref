@@ -13,6 +13,9 @@ import {
 
 export namespace Components {
   interface AppRoot {}
+  interface CLogoutBtn {
+    'history': RouterHistory;
+  }
   interface PCatchall {}
   interface PDashboard {}
   interface PHome {}
@@ -30,6 +33,12 @@ declare global {
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
+  };
+
+  interface HTMLCLogoutBtnElement extends Components.CLogoutBtn, HTMLStencilElement {}
+  var HTMLCLogoutBtnElement: {
+    prototype: HTMLCLogoutBtnElement;
+    new (): HTMLCLogoutBtnElement;
   };
 
   interface HTMLPCatchallElement extends Components.PCatchall, HTMLStencilElement {}
@@ -69,6 +78,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'app-root': HTMLAppRootElement;
+    'c-logout-btn': HTMLCLogoutBtnElement;
     'p-catchall': HTMLPCatchallElement;
     'p-dashboard': HTMLPDashboardElement;
     'p-home': HTMLPHomeElement;
@@ -80,6 +90,9 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppRoot {}
+  interface CLogoutBtn {
+    'history'?: RouterHistory;
+  }
   interface PCatchall {}
   interface PDashboard {}
   interface PHome {}
@@ -91,6 +104,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'app-root': AppRoot;
+    'c-logout-btn': CLogoutBtn;
     'p-catchall': PCatchall;
     'p-dashboard': PDashboard;
     'p-home': PHome;
@@ -107,6 +121,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'c-logout-btn': LocalJSX.CLogoutBtn & JSXBase.HTMLAttributes<HTMLCLogoutBtnElement>;
       'p-catchall': LocalJSX.PCatchall & JSXBase.HTMLAttributes<HTMLPCatchallElement>;
       'p-dashboard': LocalJSX.PDashboard & JSXBase.HTMLAttributes<HTMLPDashboardElement>;
       'p-home': LocalJSX.PHome & JSXBase.HTMLAttributes<HTMLPHomeElement>;

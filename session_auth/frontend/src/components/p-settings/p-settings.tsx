@@ -12,7 +12,7 @@ export class PSettings {
         <br />
         <p>Hello Name</p>
         <br />
-        <button>Logout</button>
+        <c-logout-btn></c-logout-btn>
       </div>
     );
   }
