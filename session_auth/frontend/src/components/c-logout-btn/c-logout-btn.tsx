@@ -1,5 +1,5 @@
 import { Component, Prop, h } from "@stencil/core";
-import { RouterHistory } from "@stencil/router";
+import { RouterHistory, injectHistory } from "@stencil/router";
 
 @Component({
   tag: "c-logout-btn",
@@ -24,8 +24,7 @@ export class CLogoutBtn {
         return res.json();
       })
       .then(data => {
-        if (data.status === "success") this.history.push("/", {});
-        console.log(data);
+        if (data.status === "success") this.history.replace("/");
       })
       .catch(error => {
         console.log(error);
@@ -39,3 +38,5 @@ export class CLogoutBtn {
     );
   }
 }
+
+injectHistory(CLogoutBtn);

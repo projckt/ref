@@ -1,10 +1,12 @@
-import { Component, h } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
+import { RouterHistory, injectHistory } from "@stencil/router";
 
 @Component({
   tag: "p-login",
   styleUrl: "p-login.css"
 })
 export class PLogin {
+  @Prop() history: RouterHistory;
   private email: string = "";
   private password: string = "";
 
@@ -34,7 +36,9 @@ export class PLogin {
         return res.json();
       })
       .then(data => {
-        console.log(data);
+        if (data.status === "success") {
+          this.history.replace("/dashboard");
+        }
       })
       .catch(error => {
         console.log(error);
@@ -74,3 +78,5 @@ export class PLogin {
     );
   }
 }
+
+injectHistory(PLogin);

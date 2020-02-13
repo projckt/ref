@@ -20,7 +20,9 @@ export namespace Components {
   interface PCatchall {}
   interface PDashboard {}
   interface PHome {}
-  interface PLogin {}
+  interface PLogin {
+    'history': RouterHistory;
+  }
   interface PRegister {
     'history': RouterHistory;
   }
@@ -105,7 +107,9 @@ declare namespace LocalJSX {
   interface PCatchall {}
   interface PDashboard {}
   interface PHome {}
-  interface PLogin {}
+  interface PLogin {
+    'history'?: RouterHistory;
+  }
   interface PRegister {
     'history'?: RouterHistory;
   }
