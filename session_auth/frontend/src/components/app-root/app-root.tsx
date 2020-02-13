@@ -35,7 +35,7 @@ const PrivateRoute = ({ component, ...props }: { [key: string]: any }) => {
         if (check.cookie.isLogged()) {
           return <Component {...props} {...props.componentProps}></Component>;
         }
-        return <stencil-router-redirect url="/login"></stencil-router-redirect>;
+        return <stencil-router-redirect url="/"></stencil-router-redirect>;
       }}
     />
   );
