@@ -1,5 +1,5 @@
 import { Component, h } from "@stencil/core";
-import { check } from "../../global/utils";
+import { isUserLogged } from "../../utils/";
 
 @Component({
   tag: "app-root",
@@ -8,7 +8,7 @@ import { check } from "../../global/utils";
 })
 export class AppRoot {
   componentWillLoad() {
-    check.cookie.isLogged();
+    isUserLogged();
   }
   render() {
     return (

@@ -1,5 +1,5 @@
 import { Component, h } from "@stencil/core";
-import { check } from "../../global/utils";
+import { isUserLogged } from "../../utils/";
 
 @Component({
   tag: "p-home",
@@ -14,11 +14,7 @@ export class PHome {
     return (
       <div>
         <h2>Home Page</h2>
-        {check.cookie.isLogged() ? (
-          <c-logout-btn></c-logout-btn>
-        ) : (
-          <c-nav></c-nav>
-        )}
+        {isUserLogged() ? <c-logout-btn></c-logout-btn> : <c-nav></c-nav>}
       </div>
     );
   }
