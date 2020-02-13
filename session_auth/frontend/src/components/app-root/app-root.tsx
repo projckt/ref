@@ -32,7 +32,7 @@ const PrivateRoute = ({ component, ...props }: { [key: string]: any }) => {
     <stencil-route
       {...props}
       routeRender={() => {
-        if (check.cookie.isLogged()) {
+        if (isUserLogged()) {
           return <Component {...props} {...props.componentProps}></Component>;
         }
         return <stencil-router-redirect url="/"></stencil-router-redirect>;
@@ -47,7 +47,7 @@ const ProtectedRoute = ({ component, ...props }: { [key: string]: any }) => {
     <stencil-route
       {...props}
       routeRender={() => {
-        if (!check.cookie.isLogged()) {
+        if (isUserLogged()) {
           return <Component {...props} {...props.componentProps}></Component>;
         }
         return (
