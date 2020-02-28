@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'particle-systems-pricing',
+  namespace: 'c-pricingbox',
   outputTargets: [
     {
       type: 'dist',

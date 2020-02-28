@@ -1,5 +1,5 @@
 {
-  "name": "particle-systems-pricing",
+  "name": "c-pricingbox",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/particle-systems-pricing/particle-systems-pricing.js",
+  "unpkg": "dist/c-pricingbox/c-pricingbox.js",
   "files": [
     "dist/",
     "loader/"
