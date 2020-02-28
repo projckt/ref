@@ -10,53 +10,39 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+  interface PsPricing {
+    'billingDuration': string;
+    'currency': string;
+    'persona': string;
+    'price': number;
+    'tier': string;
   }
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLPsPricingElement extends Components.PsPricing, HTMLStencilElement {}
+  var HTMLPsPricingElement: {
+    prototype: HTMLPsPricingElement;
+    new (): HTMLPsPricingElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'ps-pricing': HTMLPsPricingElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+  interface PsPricing {
+    'billingDuration'?: string;
+    'currency'?: string;
+    'persona'?: string;
+    'price'?: number;
+    'tier'?: string;
   }
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'ps-pricing': PsPricing;
   }
 }
 
@@ -66,7 +52,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'ps-pricing': LocalJSX.PsPricing & JSXBase.HTMLAttributes<HTMLPsPricingElement>;
     }
   }
 }
