@@ -18,53 +18,157 @@
       }
 
       body {
-        font-size: 18px;
-        width: 100%;
+        background: #0d0b13;
+        color: rgba(255, 255, 255, 0.9);
       }
+
+      .site {
+        width: 95%;
+        margin: 1em auto;
+      }
+
+      /*
+        COPY EVERYTHING BELOW THIS POINT
+      */
 
       ps-pricing .container {
-        width: 100%;
-        background: pink;
-        padding: 1em;
+        padding: 1.5em 1em;
+        border-radius: 0.75em;
       }
 
-      ps-pricing .plan-tier {
+      ps-pricing .tier {
         font-size: 1.5em;
         font-weight: bold;
       }
 
-      ps-pricing .plan-desc {
+      ps-pricing .desc {
         margin-bottom: 1em;
       }
 
+      ps-pricing .billcycle-btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2em;
+      }
+
+      ps-pricing .billcycle-btn {
+        border: 0;
+        width: 50%;
+        padding: 1em;
+        cursor: pointer;
+        color: #cf66a9;
+        opacity: 0.87;
+        font-weight: bold;
+      }
+
+      ps-pricing .billcycle-btn:hover {
+        opacity: 1;
+      }
+
+      ps-pricing .billcycle-btn-left-active {
+        background: #cf66a9;
+        border: 1px solid #cf66a9;
+        border-right: 0;
+        border-radius: 0.5em 0 0 0.5em;
+        color: white;
+        opacity: 1;
+      }
+      ps-pricing .billcycle-btn-left-inactive {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid #cf66a9;
+        border-right: 0;
+        border-radius: 0.5em 0 0 0.5em;
+      }
+      ps-pricing .billcycle-btn-right-active {
+        background: #cf66a9;
+        border: 1px solid #cf66a9;
+        border-radius: 0 0.5em 0.5em 0;
+        color: white;
+        opacity: 1;
+      }
+      ps-pricing .billcycle-btn-right-inactive {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid #cf66a9;
+        border-radius: 0 0.5em 0.5em 0;
+      }
+
       ps-pricing .billing-details {
+        font-size: 1.25em;
+      }
+
+      ps-pricing .billing-cost {
         font-size: 2em;
-        background: orange;
+      }
+
+      ps-pricing .billing-duration {
+        font-size: 1em;
       }
 
       ps-pricing .billing-slider {
+        cursor: pointer;
+        -webkit-appearance: none;
         width: 100%;
+        height: 8px;
+        background: rgba(0, 0, 0, 1);
+        outline: none;
+        opacity: 0.87;
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
+        border: 1px solid #cf66a9;
+        border-radius: 1em;
+      }
+      ps-pricing .billing-slider:hover {
+        opacity: 1;
+      }
+
+      ps-pricing .billing-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #cf66a9;
+        /* border: 2px solid rgba(255, 255, 255, 0.7); */
+        border-radius: 100%;
+        cursor: pointer;
+      }
+
+      ps-pricing .billing-slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4caf50;
+        cursor: pointer;
       }
 
       ps-pricing .plan-billing-btns {
         margin-bottom: 1em;
       }
 
-      ps-pricing .plan-billing-btn {
-      }
-
       ps-pricing .price-unit {
         margin: 1em 0;
+      }
+
+      ps-pricing .price-unit-highlight {
+        background: rgba(255, 255, 255, 0.2);
         font-weight: bold;
+        padding: 0.3em 0.3em;
+        border-radius: 0.3em;
       }
 
       ps-pricing .seperator {
         border: 1px solid rgba(0, 0, 0, 0.1);
         margin: 1.5em 0;
       }
+
+      ps-pricing .pricing-features {
+        list-style-type: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
     </style>
   </head>
   <body>
-    <ps-pricing tier="Premium" persona="Freelancers"></ps-pricing>
+    <div class="site">
+      <ps-pricing tier="Professional Plans"></ps-pricing>
+    </div>
   </body>
 </html>

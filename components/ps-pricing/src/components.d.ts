@@ -11,10 +11,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface PsPricing {
-    'billingDuration': string;
-    'currency': string;
-    'persona': string;
-    'price': number;
     'tier': string;
   }
 }
@@ -34,10 +30,6 @@ declare global {
 
 declare namespace LocalJSX {
   interface PsPricing {
-    'billingDuration'?: string;
-    'currency'?: string;
-    'persona'?: string;
-    'price'?: number;
     'tier'?: string;
   }
 
