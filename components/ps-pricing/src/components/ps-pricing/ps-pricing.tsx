@@ -43,49 +43,49 @@ export class PsPricing {
       if (this.billingPeriod === "monthly") {
         this.price = 19;
         this.billingDuration = "month";
-        this.captures = "150 captures / month";
-        this.postLimit = "$1 for 5 captures";
+        this.captures = "500 captures / month";
+        this.postLimit = "$0.05 per capture";
       } else if (this.billingPeriod === "yearly") {
         this.price = 199;
         this.billingDuration = "year";
-        this.captures = "1800 captures / year";
-        this.postLimit = "";
+        this.captures = "6000 captures / year";
+        this.postLimit = "$0.005 per capture";
       }
     } else if (this.sliderIndex == 2) {
       if (this.billingPeriod === "monthly") {
         this.price = 49;
         this.billingDuration = "month";
-        this.captures = "500 captures / month";
-        this.postLimit = "";
+        this.captures = "1500 captures / month";
+        this.postLimit = "$0.03 per capture";
       } else if (this.billingPeriod === "yearly") {
         this.price = 499;
         this.billingDuration = "year";
-        this.captures = "6000 captures / year";
-        this.postLimit = "";
+        this.captures = "18000 captures / year";
+        this.postLimit = "$0.003 per capture";
       }
     } else if (this.sliderIndex == 3) {
       if (this.billingPeriod === "monthly") {
         this.price = 99;
         this.billingDuration = "month";
-        this.captures = "1000 captures / month";
-        this.postLimit = "";
+        this.captures = "3000 captures / month";
+        this.postLimit = "$0.02 per capture";
       } else if (this.billingPeriod === "yearly") {
         this.price = 999;
         this.billingDuration = "year";
-        this.captures = "12000 captures / year";
-        this.postLimit = "";
+        this.captures = "36000 captures / year";
+        this.postLimit = "$0.002 per capture";
       }
     } else if (this.sliderIndex == 4) {
       if (this.billingPeriod === "monthly") {
         this.price = 199;
         this.billingDuration = "month";
-        this.captures = "2200 captures / month";
-        this.postLimit = "";
+        this.captures = "7500 captures / month";
+        this.postLimit = "$0.01 per capture";
       } else if (this.billingPeriod === "yearly") {
         this.price = 1999;
         this.billingDuration = "year";
-        this.captures = "26400 captures / year";
-        this.postLimit = "";
+        this.captures = "90000 captures / year";
+        this.postLimit = "$0.001 per capture";
       }
     }
   }
@@ -128,12 +128,12 @@ export class PsPricing {
           <p class="price-unit">
             <span class="highlight">Limit:</span>
             <br />
-            <strong>Upto {this.captures}</strong>
+            Upto {this.captures}
             <br />
             <br />
             <span class="highlight">After exceeding Limit:</span>
             <br />
-            <strong>{this.postLimit}</strong>
+            {this.postLimit}
           </p>
           <input
             onInput={event => this.handleSliderInput(event)}
