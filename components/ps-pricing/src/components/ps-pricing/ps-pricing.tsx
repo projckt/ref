@@ -15,6 +15,11 @@ export class PsPricing {
   private billingDuration: string;
   private captures: string;
   private postLimit: string;
+  private features = [
+    "Use all Particles",
+    "Use all Integrations",
+    "Use on unlimited websites"
+  ];
 
   handleMonthlyBtnClick(event) {
     event.preventDefault();
@@ -31,6 +36,7 @@ export class PsPricing {
   }
 
   componentWillLoad() {
+    console.log(`features: ${this.features}`);
     this.updateUIData();
   }
 
@@ -51,6 +57,7 @@ export class PsPricing {
         this.captures = "6000 captures / year";
         this.postLimit = "$0.005 per capture";
       }
+      this.desc = "Ideal for Individuals";
     } else if (this.sliderIndex == 2) {
       if (this.billingPeriod === "monthly") {
         this.price = 49;
@@ -63,6 +70,7 @@ export class PsPricing {
         this.captures = "18000 captures / year";
         this.postLimit = "$0.003 per capture";
       }
+      this.desc = "Ideal for Startups";
     } else if (this.sliderIndex == 3) {
       if (this.billingPeriod === "monthly") {
         this.price = 99;
@@ -75,6 +83,7 @@ export class PsPricing {
         this.captures = "36000 captures / year";
         this.postLimit = "$0.002 per capture";
       }
+      this.desc = "Ideal for small companies";
     } else if (this.sliderIndex == 4) {
       if (this.billingPeriod === "monthly") {
         this.price = 199;
@@ -87,6 +96,7 @@ export class PsPricing {
         this.captures = "90000 captures / year";
         this.postLimit = "$0.001 per capture";
       }
+      this.desc = "Ideal for Large companies";
     }
   }
 
@@ -148,9 +158,11 @@ export class PsPricing {
         </div>
         <div class="seperator"></div>
         <ul class="pricing-features">
-          <li>All Particles</li>
-          <li>All Integrations</li>
-          <li>Unlimited websites</li>
+          {this.features.map(feature => (
+            <li>
+              <span class="green-tick">✓</span> {feature}
+            </li>
+          ))}
         </ul>
       </div>
     );
