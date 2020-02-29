@@ -1,15 +1,15 @@
-import { Component, Prop, State, h } from "@stencil/core";
+import { Component, State, h } from "@stencil/core";
 
 @Component({
   tag: "ps-pricing",
   styleUrl: "ps-pricing.css"
 })
 export class PsPricing {
-  @Prop() tier: string;
   @State() billingPeriod: string = "monthly";
-  @State() sliderIndex: number = 3;
+  @State() sliderIndex: number = 2;
   @State() price: number;
 
+  private tier: string;
   private desc: string;
   private currency: string = "$";
   private billingDuration: string;
@@ -57,7 +57,8 @@ export class PsPricing {
         this.captures = "6000 captures / year";
         this.postLimit = "$0.005 per capture";
       }
-      this.desc = "Ideal for Individuals";
+      this.tier = "Starter";
+      this.desc = "Ideal for low volume";
     } else if (this.sliderIndex == 2) {
       if (this.billingPeriod === "monthly") {
         this.price = 49;
@@ -70,6 +71,7 @@ export class PsPricing {
         this.captures = "18000 captures / year";
         this.postLimit = "$0.003 per capture";
       }
+      this.tier = "Growth";
       this.desc = "Ideal for Startups";
     } else if (this.sliderIndex == 3) {
       if (this.billingPeriod === "monthly") {
@@ -83,20 +85,8 @@ export class PsPricing {
         this.captures = "36000 captures / year";
         this.postLimit = "$0.002 per capture";
       }
+      this.tier = "Mature";
       this.desc = "Ideal for small companies";
-    } else if (this.sliderIndex == 4) {
-      if (this.billingPeriod === "monthly") {
-        this.price = 199;
-        this.billingDuration = "month";
-        this.captures = "7500 captures / month";
-        this.postLimit = "$0.01 per capture";
-      } else if (this.billingPeriod === "yearly") {
-        this.price = 1999;
-        this.billingDuration = "year";
-        this.captures = "90000 captures / year";
-        this.postLimit = "$0.001 per capture";
-      }
-      this.desc = "Ideal for Large companies";
     }
   }
 
@@ -152,7 +142,7 @@ export class PsPricing {
             id="points"
             name="points"
             min="1"
-            max="4"
+            max="3"
             value={this.sliderIndex}
           ></input>
         </div>

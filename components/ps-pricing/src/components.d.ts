@@ -10,9 +10,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface PsPricing {
-    'tier': string;
-  }
+  interface PsPricing {}
 }
 
 declare global {
@@ -29,9 +27,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface PsPricing {
-    'tier'?: string;
-  }
+  interface PsPricing {}
 
   interface IntrinsicElements {
     'ps-pricing': PsPricing;
