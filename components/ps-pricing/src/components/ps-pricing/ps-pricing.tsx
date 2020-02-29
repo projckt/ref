@@ -13,6 +13,8 @@ export class PsPricing {
   private desc: string;
   private currency: string = "$";
   private billingDuration: string;
+  private captures: string;
+  private postLimit: string;
 
   handleMonthlyBtnClick(event) {
     event.preventDefault();
@@ -41,33 +43,49 @@ export class PsPricing {
       if (this.billingPeriod === "monthly") {
         this.price = 19;
         this.billingDuration = "month";
+        this.captures = "150 captures / month";
+        this.postLimit = "$1 for 5 captures";
       } else if (this.billingPeriod === "yearly") {
         this.price = 199;
         this.billingDuration = "year";
+        this.captures = "1800 captures / year";
+        this.postLimit = "";
       }
     } else if (this.sliderIndex == 2) {
       if (this.billingPeriod === "monthly") {
         this.price = 49;
         this.billingDuration = "month";
+        this.captures = "500 captures / month";
+        this.postLimit = "";
       } else if (this.billingPeriod === "yearly") {
         this.price = 499;
         this.billingDuration = "year";
+        this.captures = "6000 captures / year";
+        this.postLimit = "";
       }
     } else if (this.sliderIndex == 3) {
       if (this.billingPeriod === "monthly") {
         this.price = 99;
         this.billingDuration = "month";
+        this.captures = "1000 captures / month";
+        this.postLimit = "";
       } else if (this.billingPeriod === "yearly") {
         this.price = 999;
         this.billingDuration = "year";
+        this.captures = "12000 captures / year";
+        this.postLimit = "";
       }
     } else if (this.sliderIndex == 4) {
       if (this.billingPeriod === "monthly") {
         this.price = 199;
         this.billingDuration = "month";
+        this.captures = "2200 captures / month";
+        this.postLimit = "";
       } else if (this.billingPeriod === "yearly") {
         this.price = 1999;
         this.billingDuration = "year";
+        this.captures = "26400 captures / year";
+        this.postLimit = "";
       }
     }
   }
@@ -108,8 +126,14 @@ export class PsPricing {
             / {this.billingDuration}
           </p>
           <p class="price-unit">
-            Upto{" "}
-            <span class="price-unit-highlight">1000 captures per month</span>
+            <span class="highlight">Limit:</span>
+            <br />
+            <strong>Upto {this.captures}</strong>
+            <br />
+            <br />
+            <span class="highlight">After exceeding Limit:</span>
+            <br />
+            <strong>{this.postLimit}</strong>
           </p>
           <input
             onInput={event => this.handleSliderInput(event)}
