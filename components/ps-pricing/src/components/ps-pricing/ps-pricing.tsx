@@ -126,12 +126,12 @@ export class PsPricing {
             / {this.billingDuration}
           </p>
           <p class="price-unit">
-            <span class="highlight">Limit:</span>
+            <span class="highlight">Limit</span>
             <br />
             Upto {this.captures}
-            <br />
-            <br />
-            <span class="highlight">After exceeding Limit:</span>
+          </p>
+          <p class="price-unit">
+            <span class="highlight">After exceeding Limit</span>
             <br />
             {this.postLimit}
           </p>
