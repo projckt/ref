@@ -1,6 +1,6 @@
 {
   "name": "ps-pricing",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Pricing Component for Particle Systems",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ps-pricing/ps-pricing.js",
+  "unpkg": "dist/ps-pricing.js",
   "files": [
     "dist/",
     "loader/"
