@@ -1,6 +1,6 @@
 {
   "name": "ps-pricing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pricing Component for Particle Systems",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
