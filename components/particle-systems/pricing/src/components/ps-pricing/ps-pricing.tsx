@@ -6,7 +6,7 @@ import { Component, State, h } from "@stencil/core";
 })
 export class PsPricing {
   @State() billingPeriod: string = "monthly";
-  @State() sliderIndex: number = 2;
+  @State() sliderIndex: number = 3;
   @State() price: number;
 
   private tier: string;
@@ -47,6 +47,20 @@ export class PsPricing {
   updateUIData() {
     if (this.sliderIndex == 1) {
       if (this.billingPeriod === "monthly") {
+        this.price = 0;
+        this.billingDuration = "month";
+        this.captures = "100 captures";
+        this.postLimit = "$0 per capture";
+      } else if (this.billingPeriod === "yearly") {
+        this.price = 0;
+        this.billingDuration = "year";
+        this.captures = "100 captures";
+        this.postLimit = "$0 per capture";
+      }
+      this.tier = "Trial";
+      this.desc = "Full & free access";
+    } else if (this.sliderIndex == 2) {
+      if (this.billingPeriod === "monthly") {
         this.price = 19;
         this.billingDuration = "month";
         this.captures = "500 captures / month";
@@ -59,7 +73,7 @@ export class PsPricing {
       }
       this.tier = "Starter";
       this.desc = "Ideal for low volume";
-    } else if (this.sliderIndex == 2) {
+    } else if (this.sliderIndex == 3) {
       if (this.billingPeriod === "monthly") {
         this.price = 49;
         this.billingDuration = "month";
@@ -73,7 +87,7 @@ export class PsPricing {
       }
       this.tier = "Growth";
       this.desc = "Ideal for Startups";
-    } else if (this.sliderIndex == 3) {
+    } else if (this.sliderIndex == 4) {
       if (this.billingPeriod === "monthly") {
         this.price = 99;
         this.billingDuration = "month";
@@ -142,7 +156,7 @@ export class PsPricing {
             id="points"
             name="points"
             min="1"
-            max="3"
+            max="4"
             value={this.sliderIndex}
           ></input>
         </div>
