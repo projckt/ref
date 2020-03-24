@@ -50,12 +50,12 @@ export class PsPricing {
         this.price = 0;
         this.billingDuration = "month";
         this.captures = "100 captures";
-        this.postLimit = "$0 per capture";
+        this.postLimit = "-";
       } else if (this.billingPeriod === "yearly") {
         this.price = 0;
         this.billingDuration = "year";
         this.captures = "100 captures";
-        this.postLimit = "$0 per capture";
+        this.postLimit = "-";
       }
       this.tier = "Trial";
       this.desc = "Full & free access";
@@ -132,7 +132,11 @@ export class PsPricing {
           </button>
         </div>
         <div class="billing-details-container">
-          <p class="billing-details">
+          <p
+            class={
+              this.sliderIndex == 1 ? "billing-details hide" : "billing-details"
+            }
+          >
             <span class="billing-cost">
               {this.currency}
               {this.price}
