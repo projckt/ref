@@ -37,7 +37,6 @@ export class PsPricing {
   }
 
   componentWillLoad() {
-    console.log(`features: ${this.features}`);
     this.updateUIData();
   }
 
