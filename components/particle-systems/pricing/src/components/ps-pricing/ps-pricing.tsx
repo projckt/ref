@@ -135,9 +135,7 @@ export class PsPricing {
         <div class="billing-details-container">
           <p
             class={
-              this.sliderIndex == 1 || 5
-                ? "billing-details hide"
-                : "billing-details"
+              this.sliderIndex == 1 ? "billing-details hide" : "billing-details"
             }
           >
             <span class="billing-cost">
