@@ -2,7 +2,7 @@ import { Component, State, h } from "@stencil/core";
 
 @Component({
   tag: "ps-pricing",
-  styleUrl: "ps-pricing.css"
+  styleUrl: "ps-pricing.css",
 })
 export class PsPricing {
   @State() billingPeriod: string = "monthly";
@@ -18,7 +18,8 @@ export class PsPricing {
   private features = [
     "Use all Particles",
     "Use all Integrations",
-    "Use on unlimited websites"
+    "Use on unlimited websites",
+    "Support & Troubleshooting",
   ];
 
   handleMonthlyBtnClick(event) {
@@ -58,7 +59,7 @@ export class PsPricing {
         this.postLimit = "-";
       }
       this.tier = "Trial";
-      this.desc = "Full & free access";
+      this.desc = "";
     } else if (this.sliderIndex == 2) {
       if (this.billingPeriod === "monthly") {
         this.price = 19;
@@ -71,8 +72,8 @@ export class PsPricing {
         this.captures = "6000 captures / year";
         this.postLimit = "$0.005 per capture";
       }
-      this.tier = "Starter";
-      this.desc = "Ideal for low volume";
+      this.tier = "Basic";
+      this.desc = "";
     } else if (this.sliderIndex == 3) {
       if (this.billingPeriod === "monthly") {
         this.price = 49;
@@ -85,8 +86,8 @@ export class PsPricing {
         this.captures = "18000 captures / year";
         this.postLimit = "$0.003 per capture";
       }
-      this.tier = "Growth";
-      this.desc = "Ideal for Startups";
+      this.tier = "Pro";
+      this.desc = "";
     } else if (this.sliderIndex == 4) {
       if (this.billingPeriod === "monthly") {
         this.price = 99;
@@ -99,8 +100,8 @@ export class PsPricing {
         this.captures = "36000 captures / year";
         this.postLimit = "$0.002 per capture";
       }
-      this.tier = "Mature";
-      this.desc = "Ideal for small companies";
+      this.tier = "Elite";
+      this.desc = "";
     }
   }
 
@@ -134,7 +135,9 @@ export class PsPricing {
         <div class="billing-details-container">
           <p
             class={
-              this.sliderIndex == 1 ? "billing-details hide" : "billing-details"
+              this.sliderIndex == 1 || 5
+                ? "billing-details hide"
+                : "billing-details"
             }
           >
             <span class="billing-cost">
@@ -154,7 +157,7 @@ export class PsPricing {
             {this.postLimit}
           </p>
           <input
-            onInput={event => this.handleSliderInput(event)}
+            onInput={(event) => this.handleSliderInput(event)}
             class="billing-slider"
             type="range"
             id="points"
@@ -166,7 +169,7 @@ export class PsPricing {
         </div>
         <div class="seperator"></div>
         <ul class="pricing-features">
-          {this.features.map(feature => (
+          {this.features.map((feature) => (
             <li>
               <span class="green-tick">✓</span> {feature}
             </li>
