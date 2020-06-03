@@ -7,9 +7,7 @@ import { isUserLogged } from "../../utils/";
   shadow: true
 })
 export class AppRoot {
-  componentWillLoad() {
-    isUserLogged();
-  }
+
   render() {
     return (
       <stencil-router>
